@@ -9,57 +9,48 @@
     <GridLayout
         android:layout_width="464dp"
         android:layout_height="711dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp">
+        tools:layout_editor_absoluteX="9dp"
+        tools:layout_editor_absoluteY="4dp">
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="327dp"
+            android:layout_height="426dp"
             android:layout_column="0"
             android:layout_row="0">
 
             <GridLayout
-                android:layout_width="119dp"
-                android:layout_height="112dp">
-
-                <Button
-                    android:id="@+id/button"
-                    android:layout_width="99dp"
-                    android:layout_height="77dp"
-                    android:text="Create" />
-            </GridLayout>
-
-            <GridLayout
-                android:layout_width="322dp"
-                android:layout_height="110dp">
+                android:layout_width="100dp"
+                android:layout_height="wrap_content">
 
                 <TextView
-                    android:id="@+id/textView"
+                    android:id="@+id/textView6"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_height="49dp"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:text="難度:"
                     android:textAlignment="center"
-                    android:textColor="@android:color/holo_green_dark"
-                    android:textSize="24sp" />
+                    android:textSize="30sp" />
             </GridLayout>
 
             <GridLayout
-                android:layout_width="120dp"
-                android:layout_height="104dp"
-                android:layout_column="0"
-                android:layout_row="1">
+                android:layout_width="277dp"
+                android:layout_height="59dp">
 
-                <Button
-                    android:id="@+id/button2"
-                    android:layout_width="99dp"
-                    android:layout_height="70dp"
-                    android:text="Check" />
+                <EditText
+                    android:id="@+id/editText4"
+                    android:layout_width="41dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="number"
+                    android:textSize="24sp" />
             </GridLayout>
 
             <GridLayout
                 android:layout_width="121dp"
                 android:layout_height="104dp"
                 android:layout_column="0"
-                android:layout_row="2">
+                android:layout_row="3">
 
                 <Button
                     android:id="@+id/button3"
@@ -69,30 +60,92 @@
             </GridLayout>
 
             <GridLayout
-                android:layout_width="323dp"
+                android:layout_width="120dp"
+                android:layout_height="104dp"
+                android:layout_column="0"
+                android:layout_row="2">
+
+                <Button
+                    android:id="@+id/button2"
+                    android:layout_width="99dp"
+                    android:layout_height="70dp"
+                    android:text="Check" />
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="119dp"
+                android:layout_height="112dp"
+                android:layout_column="0"
+                android:layout_row="1">
+
+                <Button
+                    android:id="@+id/button"
+                    android:layout_width="99dp"
+                    android:layout_height="77dp"
+                    android:layout_column="0"
+                    android:layout_row="0"
+                    android:text="Create" />
+
+            </GridLayout>
+
+            <FrameLayout
+                android:layout_width="277dp"
+                android:layout_height="108dp"
+                android:layout_column="1"
+                android:layout_row="3"
+                tools:layout_editor_absoluteX="30dp"
+                tools:layout_editor_absoluteY="41dp">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="269dp"
+                    android:layout_height="110dp"
+                    android:text="提示:A表示數字與位置完全正確，B表示數字正確但位置錯誤"
+                    android:textColor="@android:color/holo_red_light"
+                    android:textSize="18sp" />
+            </FrameLayout>
+
+            <GridLayout
+                android:layout_width="match_parent"
                 android:layout_height="107dp"
                 android:layout_column="1"
-                android:layout_row="1">
+                android:layout_row="2">
 
                 <EditText
                     android:id="@+id/editText"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:ems="10"
-                    android:text="輸入數字"
-                    android:inputType="number"
+                    android:layout_width="262dp"
+                    android:layout_height="72dp"
                     android:clickable="true"
-                    android:onClick="clearInput" />
+                    android:ems="10"
+                    android:inputType="number"
+                    android:onClick="clearInput"
+                    android:text="輸入數字"
+                    android:textColor="@android:color/holo_orange_dark" />
 
+            </GridLayout>
+
+            <GridLayout
+                android:layout_width="283dp"
+                android:layout_height="103dp"
+                android:layout_column="1"
+                android:layout_row="1">
+
+                <TextView
+                    android:id="@+id/textView"
+                    android:layout_width="259dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:textColor="@android:color/holo_green_dark"
+                    android:textSize="24sp" />
             </GridLayout>
 
         </GridLayout>
 
         <GridLayout
             android:layout_width="match_parent"
-            android:layout_height="355dp"
+            android:layout_height="281dp"
             android:layout_column="0"
-            android:layout_row="1">
+            android:layout_row="2">
 
             <EditText
                 android:id="@+id/editText2"
@@ -100,10 +153,12 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:inputType="textMultiLine"
-                android:textAlignment="center"
-                android:textColor="@android:color/holo_blue_dark"
-                android:textSize="24sp" />
+                android:selectAllOnFocus="false"
+                android:singleLine="false"
+                android:textAlignment="viewStart"
+                android:textColor="@android:color/holo_red_light" />
         </GridLayout>
 
     </GridLayout>
+
 </android.support.constraint.ConstraintLayout>
