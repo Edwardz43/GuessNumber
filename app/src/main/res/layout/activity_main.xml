@@ -8,8 +8,8 @@
     tools:context="com.example.edlo.guessnumber.MainActivity">
 
     <GridLayout
-        android:layout_width="358dp"
-        android:layout_height="511dp"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         tools:layout_editor_absoluteX="2dp"
         tools:layout_editor_absoluteY="2dp">
 

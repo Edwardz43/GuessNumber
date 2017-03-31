@@ -1,10 +1,12 @@
 package com.example.edlo.guessnumber;
 
+import android.media.AudioManager;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -15,7 +17,8 @@ public class Main2Activity extends AppCompatActivity {
     String answer;
     int n;
     int count;
-
+    MediaPlayer mp1, mp2, mp3;
+    private SoundPool pool;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,7 +26,14 @@ public class Main2Activity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         n=bundle.getInt("diff");
         findview();
-
+        //加入BGM的設定
+        try {
+            mp1 = MediaPlayer.create(this, R.raw.chiken);
+            mp1.setLooping(true);
+        }catch(Exception e){
+            Toast to2 = Toast.makeText(this, "Error" ,Toast.LENGTH_SHORT);
+            to2.show();
+        }
     }
     private void findview() {
         createAnswer = (Button)findViewById(R.id.button);
@@ -51,83 +61,100 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"1");
+                soundNum();
             }
         });
         b2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"2");
+                soundNum();
             }
         });
         b3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"3");
+                soundNum();
             }
         });
         b4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"4");
+                soundNum();
             }
         });
         b5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"5");
+                soundNum();
             }
         });
         b6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"6");
+                soundNum();
             }
         });
         b7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"7");
+                soundNum();
             }
         });
         b8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"8");
+                soundNum();
             }
         });
         b9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"9");
+                soundNum();
             }
         });
         b0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 input.setText(input.getText().toString()+"0");
+                soundNum();
             }
         });
         clear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 clearInput();
+                soundNum();
             }
         });
         back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 back();
+                soundNum();
             }
         });
     }
-
+    //按鍵音效
+    private void soundNum() {
+        mp2 = MediaPlayer.create(this ,R.raw.cursor1);
+        mp2.start();
+        mp2.release();
+    }
+    //倒退鍵的邏輯
     private void back() {
         String s = input.getText().toString();
         if(s.length() >= 1){
             input.setText(s.substring(0 ,s.length()-1));
         }
     }
-
     View.OnClickListener c1 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -137,6 +164,7 @@ public class Main2Activity extends AppCompatActivity {
         }
     };
 
+
     View.OnClickListener c2 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -144,7 +172,8 @@ public class Main2Activity extends AppCompatActivity {
             String g = input.getText().toString();
             String result = checkAB(a, g);
             if(result.equals(n+"A0B")){
-                showAB.setText(result+", Winner!\n再來一局吧!");
+                cheer();
+                showAB.setText(result+", 完全正確!\n再來一局吧!");
                 showHist.setText("恭喜!您一共猜了【"+count+"】次!");
                 count=0;
                 clearInput();
@@ -163,15 +192,49 @@ public class Main2Activity extends AppCompatActivity {
             }
         }
     };
+
+    private void cheer() {
+        mp3= MediaPlayer.create(this, R.raw.fireworks01);
+        mp3.start();
+    }
+
     View.OnClickListener c3 = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             showAB.setText("可惜了...答案是:\n"+ answer);
+            count=0;
+            clearInput();
         }
     };
+
+    //新學到的  控制音樂的寫法
+    //onResume 一進到畫面就要做的事  override 加了一個播放音樂
+    @Override
+    protected void onResume() {
+    // TODO Auto-generated method stub
+        super.onResume();
+        mp1.start();
+    }
+    //onPause 暫停
+    @Override
+    protected void onPause() {
+    // TODO Auto-generated method stub
+        super.onPause();
+        mp1.pause();
+    }
+    //onDestroy 離開畫面要做的事  關閉音樂
+    @Override
+    protected void onDestroy() {
+    // TODO Auto-generated method stub
+        super.onDestroy();
+        mp1.release();
+    }
+
+    //清除輸入欄位
     public void clearInput(){
         input.setText("");
     }
+
     String checkAB(String a, String g){
         try {
             if (g.length() == a.length()) {
