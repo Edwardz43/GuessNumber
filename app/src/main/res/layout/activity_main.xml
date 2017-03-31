@@ -8,10 +8,10 @@
     tools:context="com.example.edlo.guessnumber.MainActivity">
 
     <GridLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="2dp">
+        android:layout_width="344dp"
+        android:layout_height="495dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp">
 
         <FrameLayout
             android:layout_width="322dp"
@@ -21,7 +21,7 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="305dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text="【猜數字v1.0】"
                 android:textAlignment="center"
@@ -78,7 +78,7 @@
                 <EditText
                     android:id="@+id/editText3"
                     style="@style/Base.TextAppearance.AppCompat.Widget.Button.Inverse"
-                    android:layout_width="49dp"
+                    android:layout_width="35dp"
                     android:layout_height="wrap_content"
                     android:layout_column="0"
                     android:layout_row="1"
